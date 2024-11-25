@@ -1,0 +1,309 @@
+body {
+    background-color: #04324D !important;
+}
+
+.titulo {
+     font-family: 'Roboto', sans-serif;
+     font-weight: 700; /* Simula negrita, pero el efecto puede variar */
+     font-size: 30px;/*tamaño de letra*/
+     color:#39A900;/*color de letra*/
+}
+
+.titulo:hover {
+    color: white; /* Cambia el color a tu preferencia */
+}
+/*menu despegable*/
+.menu-acciones{
+    display: none;
+    position: absolute;
+    top: 30px; right: 10px;
+    background-color: #E6E6E6;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); z-index: 100;
+    padding: 10px;
+    border-radius: 5px;
+    }
+
+.menu-acciones button, .menu-acciones a {
+        display: block;
+        width: 100%;
+        padding: 5px 10px;
+        text-align: left;
+        background-color: red transparent;
+        border: none;
+        text-decoration: none;
+    }
+
+.menu-acciones button:hover, .menu-acciones a:hover {
+    background-color: #39A900 !important;
+    cursor: pointer !important;
+}
+.boton-menu-acciones {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        padding: 10px 20px;
+        background-color:   #E6E6E6;
+        border-radius: 100px;
+        cursor: pointer;
+    }
+
+    .menu-acciones {
+        padding: 10px;
+        border-radius: 5px;
+
+    }
+
+    .menu-acciones button, .menu-acciones a {
+        display: block;
+        width: 100%;
+        padding: 5px 10px;
+        text-align: left;
+        background-color: transparent;
+        border: none;
+        color: #333;
+        text-decoration: none;
+    }
+
+
+.menu-acciones button, .menu-acciones a {
+        display: block;
+        width: 100%;
+        padding: 5px 10px;
+        text-align: left;
+        background-color: transparent;
+        border: none;
+        color: black;
+        text-decoration: none;
+    }
+
+.menu-acciones button:hover, .menu-acciones a:hover {
+        cursor: pointer;
+}
+
+/*.boton_inicio iboton casa*/
+.boton_inicio i {
+    font-size: 40px;
+    color: #39A900;
+}
+
+.boton_inicio:hover i {
+    color: white;
+}
+.bi-list {
+        font-size: 45px;
+        color: #39A900;
+}
+.bi-list:hover{
+ color: white;
+}
+
+
+/*boton colaboradores activos*/
+
+.contenedor_boton_colaboradores_retirados {
+        position: absolute;
+        top: 0 !important;
+        right: 0 !important;
+}
+
+.boton_colaboradores_retirados {
+        height: 50px;
+        width: 200px;
+        margin-left: auto;
+        background-color: #39A900;
+        color:white;
+         border-radius: 10px;
+         margin:20px;
+         font-family: 'Roboto', sans-serif;
+         font-size: 15px;
+}
+
+.info_colaborador {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+        color:black;
+         font-family: 'Roboto', sans-serif;
+         margin:15px;
+}
+.contenedor_todo {
+        display: flex;
+        position: relative;
+        flex-direction: row;
+        padding: 20px;
+
+}
+
+.contenedor_colaboradores, #retirados{
+        margin-top: 60px;
+        display: flex;
+        flex-wrap: wrap; /* Permite que los elementos se envuelvan en varias filas */
+        justify-content: flex-start; /* Asegura que los elementos se alineen al inicio */
+        gap: 30px;
+}
+
+ .contenedor_colaborador {
+        text-align: center;
+        width: 260px;
+        overflow: hidden;
+        border-radius: 20px 20px 0 0px;
+        --tw-shadow: 0px 10px 10px 0px #ccc;
+        --tw-shadow-colored: 0px 10px 10px 0px #000000;
+        box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+        box-sizing: border-box; /* Incluye el padding y border en el ancho total */
+        background-color: #E6E6E6;
+        color:black;
+        font-family: 'Roboto', sans-serif;
+
+}
+h5 ,h6{
+    width: auto; /* Ajusta el ancho según el contenido */
+    font-family: 'Roboto', sans-serif;
+    white-space: normal; /* Permite que el texto pase a varias líneas si es necesario */
+    font-weight: 200; /* Peso de fuente normal, ajústalo según tu preferencia */
+    font-size: 25px/* Tamaño de fuente estándar; puedes ajustarlo según el diseño */
+    margin: 0; /* Elimina el margen por defecto para un mejor control de espacio */
+}
+
+
+.img-colaborador {
+        margin: auto;
+        width: 100%; /* Ajusta el ancho de la imagen al contenedor */
+        height: 280px;
+        object-fit: cover; /* Ajusta la imagen para que cubra el área del contenedor */
+}
+#retirados {
+        display: none;
+    }
+
+.contenedor_presentacion_colaborador {
+        position: relative;
+}
+
+
+#ver_mas_info {
+        background-color: #E6E6E6;
+        text-align: center;
+        flex-direction: column;
+        width: 260px;
+        display: none;
+        position: absolute;
+        padding: 20px;
+        --tw-shadow-colored: 0px 10px 10px 0px #000000;
+        box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+        border-radius: 0 0px 20px 20px;
+        z-index: 100;
+}
+
+
+#ver_mass {
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de la fuente */
+    color: white; /* Color del texto */
+    background-color: #39A900;  /* Fondo transparente */
+    border: 2px solid #39A900; /* Borde azul */
+    border-radius: 5px; /* Bordes redondeados */
+    display: inline-flex; /* Para alinear el texto y el ícono */
+    align-items: center; /* Alinear el texto con el ícono */
+    justify-content: center; /* Centrar el contenido */
+    cursor: pointer; /* Cambio de cursor al pasar por encima */
+    transition: all 0.3s ease; /* Transición suave */
+    font-weight: 600; /* Negrita */
+     font-family: 'Roboto', sans-serif;
+}
+
+/* Efecto al pasar el ratón (hover) */
+#ver_mass:hover {
+    background-color:white; /* Fondo azul al pasar el ratón */
+    color: #39A900; /* Texto blanco */
+    border-color: white; /* Cambiar el borde a un azul más oscuro */
+}
+
+#ver {
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de la fuente */
+    color: white; /* Color del texto */
+    background-color: #04324D;  /* Fondo transparente */
+    border: 2px solid; /* Borde azul */
+    border-radius: 5px; /* Bordes redondeados */
+    display: inline-flex; /* Para alinear el texto y el ícono */
+    align-items: center; /* Alinear el texto con el ícono */
+    justify-content: center; /* Centrar el contenido */
+    cursor: pointer; /* Cambio de cursor al pasar por encima */
+    transition: all 0.3s ease; /* Transición suave */
+    font-weight: 600; /* Negrita */
+     font-family: 'Roboto', sans-serif;
+}
+
+/* Efecto al pasar el ratón (hover) */
+#ver:hover {
+    background-color:white; /* Fondo azul al pasar el ratón */
+    color: #39A900; /* Texto blanco */
+
+}
+
+
+
+
+
+#guardar_colaborado{
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de la fuente */
+    color: white; /* Color del texto */
+    background-color: #04324D;  /* Fondo transparente */
+    border: 2px solid  #04324D; /* Borde azul */
+    border-radius: 5px; /* Bordes redondeados */
+    display: inline-flex; /* Para alinear el texto y el ícono */
+    align-items: center; /* Alinear el texto con el ícono */
+    justify-content: center; /* Centrar el contenido */
+    cursor: pointer; /* Cambio de cursor al pasar por encima */
+    transition: all 0.3s ease; /* Transición suave */
+    font-weight: 600; /* Negrita */
+     font-family: 'Roboto', sans-serif;
+
+
+}
+
+/* Efecto al pasar el ratón (hover) */
+#guardar_colaborador:hover {
+    background-color:white; /* Fondo azul al pasar el ratón */
+    color: #39A900; /* Texto blanco */
+    border-color: white; /* Cambiar el borde a un azul más oscuro */
+}
+/* Estilos para el modal */
+/* Estilos para el modal */
+
+
+
+/* Estilos para cada administrador */
+.contenedor_administrador {
+    display: flex;                   /* Utiliza Flexbox para alinear imagen y texto */
+    align-items: center;             /* Centra verticalmente los elementos */
+    gap: 15px;                       /* Espaciado entre la imagen y el texto */
+    padding: 10px;                   /* Espaciado interior */
+    border: 1px solid #39A900;       /* Borde suave para cada administrador */
+    border-radius: 6px;              /* Bordes redondeados */
+    background-color:#E6E6E6;       /* Fondo claro para cada contenedor */
+    margin-top:10px;
+}
+
+
+
+/* Estilos para la imagen del administrador */
+.imagen_administrador {
+        width: 80px; /* Ajusta el ancho de la imagen al contenedor */
+        height: 100px;
+        object-fit: cover; /* Ajusta la imagen para que cubra el área del contenedor */
+        overflow: hidden;
+
+}
+.imagen_administrador img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+}
+/* Estilos para el nombre del administrador */
+                   /* Color oscuro para el texto */
+
+
+/* Estilo personalizado para el enlace */

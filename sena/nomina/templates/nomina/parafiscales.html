@@ -6,66 +6,85 @@
 {% block contenedor %}
 
 <style>
-    .boton_regresar, .boton_mas {
-        background-color: #EBECE4;
+    body {
+        background-color: #04324D !important;
     }
 
-    .boton_regresar:hover, .boton_mas:hover {
-        background-color: #000000;
-        color: #EBECE4;
+    .navbar .container-fluid {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
-    .boton_inicio i {
-        font-size: 35px;
-        color: #EBECE4;
-    }
-
-    .table thead {
-        background-color: #EBECE4 !important;
-    }
-
-    td, th {
-        border: 1px solid #C4C7C1;
+    .boton_regresar, .boton_inicio {
+        font-size: 25px;
+        font-family: 'Roboto', sans-serif;
+        color: white; /* Cambiado a blanco para contraste */
+        background-color: #39A900; /* Color rojo de fondo */
+        font-family: 'Roboto', sans-serif;
+        border: 2px solid white; /* Borde blanco de 2px */
+        padding: 10px 20px;
+        margin-top: 20px;
         text-align: center;
-        white-space: nowrap;
-        padding: 20px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px; /* Bordes redondeados */
+        transition: background-color 0.3s, color 0.3s; /* Suaviza la transición */
     }
 
-    .card {
-        background-color: #EBECE4;
-        margin: 10px;
+    .boton_regresar:hover{
+        background-color: white ; /* Cambia el fondo a blanco al hacer hover */
+        color: #39A900; /* Cambia el color del texto a rojo al hacer hover */
+    }
+    .boton_inicio:hover{
+     background-color: #39A900;
+     color:white;
+    }
+    .boton_inicio i {
+        font-size: 25px;
+        color: white; /* Color blanco del icono */
     }
 
-    h1 {
-        color: #EBECE4 !important;
+
+    .titulo {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
+        font-size: 30px;
+        color: #39A900;
+        margin: 0;
     }
 
+    h1:hover {
+        color: white;
+    }
 </style>
 
-<body style="background-color: #442B1C;">
+
+<body>
 
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <div>
-                <button class="btn btn-light transition duration-300 ease-in-out boton_regresar" onclick="window.history.back();">
-                    Regresar <i class="fa-solid fa-reply"></i>
+                <button class="btn  transition duration-300 ease-in-out boton_regresar" onclick="window.history.back();">
+                     <i class="fa-solid fa-reply"></i> Regresar
                 </button>
-                <a class="btn transition duration-300 ease-in-out boton_inicio" href="{% url 'nomina:index' %}">
+                <a class="btn transition duration-300 ease-in-out boton_inicio" href="{% url 'nomina:index' %}" >
                     <i class="bi bi-house-fill"></i>
                 </a>
             </div>
-            <h1 class="titulo_nomina m-0 flex-grow-1 text-center">Parafiscales</h1>
+            <h1 class="titulo m-0 flex-grow-1 text-center">Parafiscales</h1>
         </div>
     </nav>
 
     {% if data %}
     {% if request.session.logueo.nombre_rol == "Administrador" %}
-        <div class="card shadow mb-4">
+        <div class="card shadow mb-4" >
             <div class="card-body">
-                <div class="table-responsive">
-                    <table width="100%" cellspacing="0">
+                <div class="table-responsive" >
+                    <table width="100%" cellspacing="0" >
                         <thead>
-                        <tr>
+                        <tr style="font-family: 'Roboto', sans-serif;font-weight: 200; /* Simula negrita, pero el efecto puede variar */font-size: 18px;/*tamaño de letra*color:#39A900;/*color de letra*/">
                             <th>Salud</th>
                             <th>Pensión</th>
                             <th>ARL</th>

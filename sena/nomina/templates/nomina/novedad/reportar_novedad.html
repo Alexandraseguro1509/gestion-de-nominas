@@ -5,20 +5,82 @@
 {% block contenedor %}
 
 <style>
-    .boton_regresar, .boton_mas {
-        background-color: #EBECE4;
-    }
+body {
+    background-color: #04324D !important;
+}
+.boton_regresar, .boton_inicio {
+    font-size: 25px; /* Tamaño de fuente uniforme */
+    color: white; /* Color blanco para el texto */
+    background-color: #39A900; /* Fondo verde */
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300; /* Peso de la fuente */
+    border: 2px solid white; /* Borde blanco */
+    padding: 12px 30px; /* Tamaño uniforme de los botones */
+    margin-top: 20px;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px; /* Bordes redondeados */
+    transition: background-color 0.3s, color 0.3s; /* Transición suave */
+    position: relative; /* Posición relativa para ajustar el espacio */
+    top: 40px; /* Espaciado superior */
 
-    .boton_regresar:hover, .boton_mas:hover {
-        background-color: #000000;
-        color: #EBECE4;
-    }
+}
 
-    .boton_inicio i {
-        font-size: 35px;
-        color: #000
-    }
+/* Efecto hover en ambos botones */
+.boton_regresar:hover {
+    background-color:#39A900;; /* Fondo blanco al hacer hover */
+    color: white; /* Texto verde al hacer hover */
+    border-color: #39A900; /* Bordes verdes al hacer hover */
+}
 
+ .boton_inicio:hover {
+    background-color: #39A900;; /* Fondo blanco al hacer hover */
+    color: #39A900;; /* Texto verde al hacer hover */
+    border-color:#39A900; /* Bordes verdes al hacer hover */
+}
+
+
+.boton_inicio i {
+    font-size: 25px; /* Tamaño uniforme de los íconos */
+    color: white; /* Color blanco para los íconos */
+}
+.boton_regresar i {
+    font-size: 30px; /*  uniforme de los íconos */
+    color: white; /* Color blanco para los íconos */
+}
+
+.titulo {
+     font-family: 'Roboto', sans-serif;
+     font-weight: 100; /* Simula negrita, pero el efecto puede variar */
+     font-size: 28px;/*tamaño de letra*/
+     color:white;/*color de letra*/
+}
+.ver_mass {
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de la fuente */
+    color: white; /* Color del texto */
+    background-color:  #04324D;  /* Fondo transparente */
+    border: 2px solid; /* Borde azul */
+    border-radius: 15px; /* Bordes redondeados */
+    display: inline-flex; /* Para alinear el texto y el ícono */
+    align-items: center; /* Alinear el texto con el ícono */
+    justify-content: center; /* Centrar el contenido */
+    cursor: pointer; /* Cambio de cursor al pasar por encima */
+    transition: all 0.3s ease; /* Transición suave */
+    font-weight: 100; /* Negrita */
+     font-family: 'Roboto', sans-serif;
+     margin-top:20px
+
+}
+
+/* Efecto al pasar el ratón (hover) */
+.ver_mass:hover {
+    background-color:white; /* Fondo azul al pasar el ratón */
+    color:  #04324D; /* Texto blanco */
+    border-color: white; /* Cambiar el borde a un azul más oscuro */
+}
     .contenedor-reportar-novedad {
         margin: 10px 100px;
 
@@ -27,6 +89,9 @@
     h2 {
         text-align: center;
     }
+    h5{
+      style="font-family: 'Roboto', sans-serif; font-weight: 100;font-size: 20px;
+   }
 
     .contenedor-tarjeta-reportar-novedad {
         background-color: #EBECE4;
@@ -39,6 +104,8 @@
         width: 100%;
         display: flex;
         padding: 20px;
+
+
     }
 
     .contenedor-imagen-reportar-novedad {
@@ -46,8 +113,8 @@
     }
 
     .imagen-reportar-novedad {
-        width: 200px;
-        height: 200px;
+        width: 150px;
+        height: 150px;
         border-radius: 100px;
     }
 
@@ -61,19 +128,44 @@
 
     .guardar-cambios-boton {
         width: 400px;
-        height: 80px;
-        font-size: 40px;
-        font-weight: bold;
+        height: 70px;
+        font-size: 30px;
+        background-color:rgb(0, 31, 63);
+        color: white;
+         margin-top:20px;
+         border-radius: 8px;
+
     }
+
+    .guardar-cambios-boton:hover {
+        border: 10px dashed #white;
+         background-color:white;
+        color: rgb(0, 31, 63);
+
+    }
+    .boton-reportar-novedad1{
+    width: 260px;
+        height: 45px;
+        font-size: 20px;
+        background-color:rgb(0, 31, 63);
+        color: white;
+         margin-top:10px;
+         border-radius: 8px;
+    }
+       .boton-reportar-novedad1:hover{
+         border: 10px dashed #white;
+         background-color:white;
+        color: rgb(0, 31, 63);
+    }
+
 </style>
 
-<body>
-
-    <nav class="navbar navbar-expand-lg navbar-light">
+<body >
+    <nav class="navbar navbar-expand-lg navbar-light"  >
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <div>
-                <button class="btn btn-light transition duration-300 ease-in-out boton_regresar" onclick="window.history.back();">
-                    Regresar <i class="fa-solid fa-reply"></i>
+                <button class="btn  transition duration-300 ease-in-out boton_regresar" onclick="window.history.back();"  >
+                   <i class="fa-solid fa-reply"></i>  Regresar
                 </button>
                 <a class="btn transition duration-300 ease-in-out boton_inicio" href="{% url 'nomina:index' %}">
                     <i class="bi bi-house-fill"></i>
@@ -82,38 +174,38 @@
         </div>
     </nav>
   <div class="contenedor-reportar-novedad">
-      <h2>¿Hay alguna novedad para reportar en los colaboradores?</h2>
-      <div class="contenedor-tarjeta-reportar-novedad">
+      <h2 class="titulo">¿Hay alguna novedad para reportar en los colaboradores?</h2>
+      <div class="contenedor-tarjeta-reportar-novedad" style=" background-color: #E6E6E6;">
           {% for i in novedades %}
-          <div class="tarjeta-reportar-novedad">
-              <div class="contenedor-imagen-reportar-novedad">
+          <div class="tarjeta-reportar-novedad" >
+              <div class="contenedor-imagen-reportar-novedad" style="margin:20px;">
                   {% if i.usuario.foto %}
                   <img class="imagen-reportar-novedad" src="{{ i.usuario.foto.url }}" alt="Foto de {{ i.usuario }}">
                   {% else %}
                   <img class="imagen-reportar-novedad" src="{% static 'nomina/img/empresario1.jpg' %}" alt="Foto de {{ i.usuario }}">
                   {% endif %}
               </div>
-              <div>
-                  <h6>{{ i.usuario.cedula }}</h6>
-                  <h4>{{ i.usuario }}</h4>
+              <div   style="font-family: 'Roboto', sans-serif; font-weight: 300;font-size: 20px;">
+                  <h5>{{ i.usuario.cedula }}</h5>
+                  <h5>{{ i.usuario }}</h5>
                   <h5>{{ i.usuario.cargo }}</h5>
                   {% if i.fecha_ultima_actualizacion != None %}
                   <h5>Últ. actualización: {{ i.fecha_ultima_actualizacion }}</h5>
                   {% endif %}
-                  <button class="btn btn-dark boton-reportar-novedad" id="abrirModalEditarNovedad" data-bs-toggle="modal" data-bs-target="#editarModalNovedad{{ i.id }}">Reportar novedad</button>
+                  <button class="ver_mass" id="abrirModalEditarNovedad" data-bs-toggle="modal" data-bs-target="#editarModalNovedad{{ i.id }}"><h4>Reportar novedad</h4></button>
               </div>
           </div>
           <div class="modal fade" id="editarModalNovedad{{ i.id }}" tabindex="-1" aria-labelledby="editarModalNovedadLabel{{ i.id }}"
-                             aria-hidden="true">
-            <div class="modal-dialog modal-lg">
+                             aria-hidden="true" >
+            <div class="modal-dialog modal-lg" >
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="editarModalNovedadLabel{{ i.id }}">Editar Colaborador</h1>
-                        <button type="button" class="btn btn-close" data-bs-dismiss="modal"
-                                aria-label="Close">
+                    <div class="modal-header" style="background-color:#39A900;">
+                        <h1 class="modal-title fs-5" id="editarModalNovedadLabel{{ i.id }}" style="color:white;font-family: 'Roboto', sans-serif; font-weight: 600;font-size: 30px;">Editar Colaborador</h1>
+                        <button  type="button" class="btn btn-close" data-bs-dismiss="modal"
+                        aria-label="Close" style="background-color: white; color: white;">
                         </button>
                     </div>
-                    <div class="modal-body" id="contenidoModalBody">
+                    <div class="modal-body" id="contenidoModalBody" style="background-color: #E6E6E6;font-family: 'Roboto', sans-serif; font-weight: 80;font-size: 18px;">
                         {% include 'nomina/novedad/novedades_editar.html' with data=i %}
                     </div>
                 </div>
@@ -122,34 +214,34 @@
           {% endfor %}
           {% for i in novedades_admin %}
           <div class="tarjeta-reportar-novedad">
-              <div class="contenedor-imagen-reportar-novedad">
+              <div class="contenedor-imagen-reportar-novedad"  style="margin:20px">
                   {% if i.usuario.foto %}
                   <img class="imagen-reportar-novedad" src="{{ i.usuario.foto.url }}" alt="Foto de {{ i.usuario }}">
                   {% else %}
                   <img class="imagen-reportar-novedad" src="{% static 'nomina/img/empresario1.jpg' %}" alt="Foto de {{ i.usuario }}">
                   {% endif %}
               </div>
-              <div>
-                  <h6>{{ i.usuario.cedula }}</h6>
-                  <h4>{{ i.usuario }}</h4>
+              <div   style="font-family: 'Roboto', sans-serif; font-weight: 300;font-size: 20px;">
+                  <h5>{{ i.usuario.cedula }}</h5>
+                  <h5>{{ i.usuario }}</h5>
                   <h5>{{ i.usuario.cargo }}</h5>
                   {% if i.fecha_ultima_actualizacion != None %}
                   <h5>Últ. actualización: {{ i.fecha_ultima_actualizacion }}</h5>
                   {% endif %}
-                  <button class="btn btn-dark boton-reportar-novedad" id="abrirModalEditarNovedad" data-bs-toggle="modal" data-bs-target="#editarModalNovedad{{ i.id }}">Reportar novedad</button>
+                  <button class="ver_mass" id="abrirModalEditarNovedad" data-bs-toggle="modal" data-bs-target="#editarModalNovedad{{ i.id }}"><h4>Reportar novedad</h4></button>
               </div>
           </div>
           <div class="modal fade" id="editarModalNovedad{{ i.id }}" tabindex="-1" aria-labelledby="editarModalNovedadLabel{{ i.id }}"
                              aria-hidden="true">
             <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="editarModalNovedadLabel{{ i.id }}">Editar Colaborador</h1>
+                <div class="modal-content" >
+                    <div class="modal-header" style="background-color: #39A900;">
+                        <h1 class="modal-title fs-5" id="editarModalNovedadLabel{{ i.id }}" style="color:white;font-family: 'Roboto', sans-serif; font-weight: 600;font-size: 30px;">Editar Colaborador</h1>
                         <button type="button" class="btn btn-close" data-bs-dismiss="modal"
-                                aria-label="Close">
+                        aria-label="Close" style="background-color: white; color: white;">
                         </button>
                     </div>
-                    <div class="modal-body" id="contenidoModalBody">
+                    <div class="modal-body" id="contenidoModalBody" style="background-color:#E6E6E6;">
                         {% include 'nomina/novedad/novedades_editar.html' with data=i %}
                     </div>
                 </div>
@@ -159,7 +251,7 @@
           <form action="{% url 'nomina:actualizar_novedades' %}" method="post" id="formGuardarCambios">
             {% csrf_token %}
             <div class="contenedor-guardar-cambios-boton">
-                <button class="btn btn-primary guardar-cambios-boton" type="submit">Guardar cambios</button>
+                <button class="ver_mass" type="submit"><h4>Guardar cambios</h4></button>
             </div>
           </form>
       </div>

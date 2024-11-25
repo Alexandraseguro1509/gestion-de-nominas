@@ -2,11 +2,8 @@
 {% load static %}
 {% block titulo %}Colaboradores{% endblock %}
 {% block contenedor %}
-
 <style>
-    body {
-        background-color: #EBECE4;
-    }
+
 
     .contenedor_liquidacion {
         display: flex;
@@ -14,7 +11,8 @@
         align-items: center !important;
         padding-top: 50px;
         border-radius: 200px 200px 0 0 ;
-        height: 830px;
+        height: 610px;
+
     }
 
     @media (max-width: 750px) {
@@ -31,59 +29,71 @@
     }
 
     .imagen_liquidacion {
-        width: 300px;
-        height: 300px;
-        border-radius: 300px;
+        width: 170px;
+        height: 170px;
+        border-radius: 170px;
+
+
     }
 
     .info_liquidacion {
         margin-top: 30px;
         text-align: center;
+        color:black
     }
 
     h4 {
-        color: #a7a7a7;
+        color: black;
     }
 
     .liquidar_empleado {
-        width: 500px;
-        height: 80px;
-        font-size: 40px;
-        background-color: #442B1C;
-        color: #EBECE4;
+        width: 300px;
+        height: 50px;
+        font-size: 30px;
+
+        color: white;
+         margin-top:20px;
+ background-color:rgb(0, 31, 63);
     }
 
     .liquidar_empleado:hover {
-        border: 2px dashed #442B1C;
-        color: #442B1C;
-    }
-</style>
+        border: 2px dashed #white;
+         background-color:white;
+        color: rgb(0, 31, 63);
 
-<div class="contenedor_liquidacion">
+    }
+
+
+
+</style>
+<body style="background-image: url('{% static 'nomina/img/teamwork-scene-close-up.jpg' %}');background-size: cover;background-color: rgba(250, 250, 250, 0.5);  /* Blanco semi-transparente */ background-blend-mode: overlay;">
+    <div class="container" >
+        <div class="contenedor_login1 wow fadeInUp relative mx-auto max-w-[525px] overflow-hidden rounded-xl shadow-form dark:bg-dark-2 py-8 px-8 text-center sm:px-12 md:px-[60px]"
+    data-wow-delay=".15s" style=" background-color:   #E6E6E6; font-family: 'Roboto', sans-serif; font-weight: 600;font-size: 30px; background-size: cover; background-blend-mode: overlay;">
+            <div class="contenedor_liquidacion" style="margin-top:5px">
     {% if usuario.foto %}
     <img class="imagen_liquidacion" src="{{ usuario.foto.url }}">
     {% else %}
-    <img class="imagen_liquidacion" src="{% static 'nomina/img/empresario1.jpg' %}" alt="">
+    <img class="imagen_liquidacion" src="{% static 'nomina/img/empresario1.jpg' %}" alt="" >
     {% endif %}
-    <div class="info_liquidacion">
-        <h4>Nombre:</h4>
-        <h3>{{ usuario.nombre }} {{ usuario.apellido }}</h3>
-        <h4>Cargo:</h4>
-        <h3>{{ usuario.get_cargo_display }}</h3>
-        <h4>En la empresa desde:</h4>
-        <h3>{{ usuario.fecha_ingreso }}</h3>
-        <h4>Recibo de Liquidación</h4>
-        <button data-bs-toggle="modal" data-bs-target="#liquidacionModal" data-id="{{ usuario.id }}" onclick="showLiquidacionModal({{ usuario.id }})" class="btn btn-dark">Visualizar</button> <br><br>
-        <a href="{% url 'nomina:liquidar_colaborador' usuario.id %}" class="btn liquidar_empleado">Liquidar colaborador</a>
+    <div class="info_liquidacion" style="color:black">
+        <h4 >Nombre:</h4>
+        <h4>{{ usuario.nombre }} {{ usuario.apellido }}</h4>
+        <h4>Cargo: </h4>
+        <h4>{{usuario.cargo }}</h4>
+        <h4>{{ usuario.get_cargo_display }}</h4>
+        <h4  >En la empresa desde:</h4>
+        <h4>{{ usuario.fecha_ingreso }}</h4>
+        <button data-bs-toggle="modal" data-bs-target="#liquidacionModal" data-id="{{ usuario.id }}" onclick="showLiquidacionModal({{ usuario.id }})" class="btn  liquidar_empleado" style=" font-family: 'Roboto', sans-serif; font-weight: 600;font-size: 30px"><h3>Descargar recibo</h3></button>
+        <a href="{% url 'nomina:liquidar_colaborador' usuario.id %}" class="btn liquidar_empleado" ><h3> Liquidar colaborador </h3></a>
     </div>
 </div>
-
 <div class="modal fade" id="liquidacionModal" tabindex="-1" aria-labelledby="liquidacionModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="liquidacionModalLabel">Recibo de Liquidación</h5>
-                <button style="margin-left: 5px;" title="Para descargar el recibo, presiona el botón descargar con el ícono de la flecha hacia abajo">
+                <button style="margin-left: 5px;" title="Para descargar el recibo, presiona el botón descargar con el ícono de la flecha hacia abajo" >
                     <i class="fa-solid fa-circle-info"></i>
                 </button>
                 <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -94,7 +104,6 @@
         </div>
     </div>
 </div>
-
 <script>
     function showLiquidacionModal(id) {
         const iframe = document.getElementById('liquidacionIframe');
@@ -103,5 +112,6 @@
         descargarBtn.href = '/descargar-liquidacion/' + id + '/';
     }
 </script>
+</body>
 
 {% endblock %}

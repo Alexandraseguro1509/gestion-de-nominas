@@ -3058,20 +3058,19 @@ body {
 }
 
 .botones_landing {
-  background-color: #442B1C;
+  background-color:  #001f3f ;/*color de ingresar*/
   border: 0 solid transparent;
-  color: #442B1C;
+  color:  white;
   border-radius: 10px;
 }
 
 .botones_landing:hover {
-  border: 2px dashed #442B1C !important;
-  background-color: #00000000 !important;
-  color: #442B1C !important;
+  background-color: #fdfefe !important;/*color de incio sesion*/
+  color:  #001F3F !important;
 }
 
 .regresar {
-  color: #FFFFFF;
+
   position: absolute;
   margin:0 20px;
   border-radius: 10px;
@@ -3079,8 +3078,10 @@ body {
 }
 
 .regresar:hover {
-  color:  #442B1C;
-  background-color: #FFFFFF;
+
+  background-size: cover;
+  color:001737;  /* Blanco semi-transparente */
+  background-blend-mode: overlay
 }
 
 @media (max-width:765px) {
@@ -3093,12 +3094,15 @@ body {
 }
 
 .descargar-ahora  {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  width: 350px; 
-  height: 100px; 
-  font-size: 30px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 250px;
+  height: 70px;
+  font-size: 20px;
   transition: margin-top 300ms;
+  background-color:#001f3f;
+  color:white;
+   border: 2px solid white;
 }
 
 .descargar-ahora:hover {
@@ -3121,7 +3125,10 @@ body {
 }
 
 .contenedor_login {
-    background-color: #EBECE4;
+    background-size: cover;
+     background-color: rgba(255, 255, 255, 0.8);
+;  /* Blanco semi-transparente */
+    background-blend-mode: overlay;
 }
 
 .logo-presentacion {

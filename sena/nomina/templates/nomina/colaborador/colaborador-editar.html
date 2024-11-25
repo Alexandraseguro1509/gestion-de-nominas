@@ -2,6 +2,7 @@
 {% load static %}
 {% block contenedor %}
 {% if data %}
+
 <form action="{% url 'nomina:colaborador_editar' data.id %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="mb-3" hidden>
@@ -28,6 +29,16 @@
         <label class="form-label">Correo:</label>
         <input type="text" class="form-control"
                placeholder="Ingresa correo" value="{{ data.correo }}" name="correo_editar">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Contraseña:</label>
+        <input type="password" class="form-control"
+               placeholder="Ingresa contraseña" value="{{ data.contrasena }}" name="contrasena_editar">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Confirmar contraseña:</label>
+        <input type="password" class="form-control"
+               placeholder="Ingresa la confirmación de la contraseña" value="{{ data.contrasena }}" name="confirmar_contrasena_editar">
     </div>
     <div class="mb-3">
         <label class="form-label col-sm-6">Foto:</label>
@@ -71,7 +82,7 @@
         <input type="date" class="form-control" id="fecha_fin_contrato_editar"
                placeholder="Ingresa la fecha fin del contrato" name="fecha_fin_contrato_editar" value="{{ data.fecha_fin_contrato }}">
     </div>
-    <button type="submit" class="btn btn-primary">Actualizar</button>
+    <button type="submit" class="btn"style="background-color: #39A900;color:white;font-family: 'Roboto', sans-serif;font-weight: 700; /* Simula negrita, pero el efecto puede variar */font-size: 20px;/*tamaño de letra*/">Actualizar</button>
 </form>
 <!--
 <script>

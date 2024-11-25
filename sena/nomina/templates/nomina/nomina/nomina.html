@@ -1,49 +1,141 @@
 {% extends 'nomina/base.html' %}
 {% load static %}
+
 {% block titulo %}Nóminas{% endblock %}
+
 {% block contenedor %}
 <style>
+
+    /* Estilo del cuerpo */
     body {
-        background-color: #442B1C !important;
+        background-color: #04324D !important;
+        font-family: 'Roboto', sans-serif;
     }
 
-    .boton_regresar, .boton_crear_nomina {
-        background-color: #EBECE4;
+    /* Estilo de la barra de navegación */
+    .navbar {
+        background-color: transparent;
+        padding: 10px;
     }
 
-    .boton_regresar:hover, .boton_crear_nomina:hover {
-        background-color: #000000;
-        color: #EBECE4;
+    /* Título */
+    .titulo {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
+        font-size: 30px;
+        color: #39A900;
+        margin: 0;
     }
 
-    .boton_inicio i {
-        font-size: 35px;
-        color: #EBECE4;
+    .titulo:hover {
+        color: white;
     }
 
-    td, th {
-        border: 1px solid #C4C7C1;
+    /* Botones de navegación */
+    .boton_inicio, .boton_regresar, .boton_crear_nomina {
+         font-size: 30px;
+        color: white; /* Cambiado a blanco para contraste */
+        background-color: #39A900; /* Color rojo de fondo */
+        font-family: 'Roboto', sans-serif;
+        border: 2px solid white; /* Borde blanco de 2px */
+        padding: 10px 20px;
+        margin-top: 20px;
         text-align: center;
-        white-space: nowrap;
-        padding: 20px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px; /* Bordes redondeados */
+        transition: background-color 0.3s, color 0.3s; /* Suaviza la transición */
+        font-family: 'Roboto', sans-serif;
     }
 
+    .boton_inicio:hover, .boton_regresar:hover, .boton_crear_nomina:hover {
+         background-color: white ; /* Cambia el fondo a blanco al hacer hover */
+        color: #39A900; /* Cambia el color del texto a rojo al hacer hover */
+    }
+
+    /* Icono en el botón de inicio */
+    .boton_inicio i {
+        color: white;
+        font-size: 30px;
+    }
+
+    .boton_inicio:hover i {
+        color: #2e7d32;
+    }
+
+    /* Estilos de la tabla de nóminas */
     .tabla_nominas {
-        background-color: #EBECE4;
-        margin: 10px auto;
-        width: 100%;
+        margin: 20px auto;
+        width: 90%;
+        border-collapse: collapse;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
     }
 
+    .tabla_nominas th, .tabla_nominas td {
+        padding: 10px;
+        text-align: center;
+        font-size: 24px;
+        color: black;
+        border: 2px solid black;
+        border-radius: 1px;
+    }
+
+    .tabla_nominas th {
+        background-color: #39A900;
+        color: #fff;
+        font-weight: bold;
+    }
+
+    .tabla_nominas td {
+        background-color: #E6E6E6;
+    }
+
+    .tabla_nominas tr:nth-child(even) td {
+        background-color: #E6E6E6;
+    }
+
+    .tabla_nominas tr:hover td {
+        background-color: #d5dbdb;
+    }
+
+    /* Acciones de la tabla */
+    .tabla_nominas .acciones a {
+        background-color: #39A900;
+        color: #04324D;
+        padding: 5px 10px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .tabla_nominas .acciones a:hover {
+        background-color: #2e7d32;
+    }
+
+    /* Lista de colaboradores */
+    .lista_colaboradores {
+        margin: 0;
+        padding-left: 0;
+        list-style-type: none;
+    }
+
+    /* Modal */
+    .modal-content {
+        border-radius: 8px;
+    }
 </style>
 
-<nav class="navbar navbar-expand-lg navbar-light">
+
+<nav class="navbar navbar-expand-lg navbar-light" style="">
     <div class="container-fluid d-flex justify-content-between align-items-center">
-        <div>
-            <a class="btn transition duration-300 ease-in-out boton_inicio" href="{% url 'nomina:index' %}">
-                <i class="bi bi-house-fill"></i>
-            </a>
-        </div>
-        <h1 class="h3 mb-2 text-gray-800" style="color: #EBECE4;">Nóminas</h1>
+        <a class="btn boton_inicio transition duration-300 ease-in-out" href="{% url 'nomina:index' %}">
+            <i class="bi bi-house-fill"></i>
+        </a>
+        <h1 class="titulo">Nóminas</h1>
         <button class="boton_regresar btn btn-light" data-bs-toggle="modal" data-bs-target="#infoModal">
             <i class="bi bi-info-lg"></i>
         </button>
@@ -55,71 +147,56 @@
         {{ mensaje }}
     </div>
 {% else %}
-    {% if request.session.logueo.nombre_rol == "Administrador" %}
     <div class="contenedor_nominas">
         <table class="tabla_nominas">
             <thead>
-            <tr>
-                <th>Fecha de Nómina</th>
-                <th>Colaboradores</th>
-                <th>Acciones</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for fecha_nomina, nominas in nominas_por_fecha_nomina.items %}
-            <tr>
-                <td>{{ fecha_nomina }}</td>
-                <td>
-                    {% for nomina in nominas %}
-                        {{ nomina.novedad.usuario.nombre }} {{ nomina.novedad.usuario.apellido }}{% if not forloop.last %}
-                        <br>
+                <tr>
+                    <th>Fecha de Nómina</th>
+                    {% if request.session.logueo.nombre_rol == "Administrador" %}
+                        <th>Colaboradores</th>
                     {% endif %}
-                    {% endfor %}
-                </td>
-                <td>
-                    <a href="{% url 'nomina:nomina_listar' fecha_nomina %}" class="btn btn-primary">Ingresar</a>
-                </td>
-            </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
-    {% else %}
-    <div class="contenedor_nominas">
-        <table class="tabla_nominas">
-            <thead>
-            <tr>
-                <th>Fecha de Nómina</th>
-                <th>Acciones</th>
-            </tr>
+                    <th>Acciones</th>
+                </tr>
             </thead>
             <tbody>
-            {% for fecha_nomina, nominas in nominas_por_fecha_nomina.items %}
-            <tr>
-                <td>{{ fecha_nomina }}</td>
-                <td>
-                    <a href="{% url 'nomina:nomina_listar' fecha_nomina %}" class="btn btn-primary">Ingresar</a>
-                </td>
-            </tr>
-            {% endfor %}
+                {% for fecha_nomina, nominas in nominas_por_fecha_nomina.items %}
+                    <tr>
+                        <td>{{ fecha_nomina }}</td>
+                        {% if request.session.logueo.nombre_rol == "Administrador" %}
+                            <td>
+                                <ul class="lista_colaboradores">
+                                    {% for nomina in nominas %}
+                                        <li>{{ nomina.novedad.usuario.nombre }} {{ nomina.novedad.usuario.apellido }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
+                        {% endif %}
+                        <td class="acciones">
+                            <a href="{% url 'nomina:nomina_listar' fecha_nomina %}">Ingresar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
-    {% endif %}
 {% endif %}
 
 <!-- Info Modal -->
-<div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModallLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Presionando en <strong>Ingresar</strong>, puedes visualizar los detalles de la nónima seleccionada y de cada colaborador.
-      </div>
+<div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="background-color:#39A900 !important;">
+            <div class="modal-header">
+                <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="font-family: 'Roboto', sans-serif;font-weight: 200;color: black ;   background-color: #E6E6E6;">
+                Presionando en <strong style="color:red;font-weight: 300;">Ingresar</strong>, puedes visualizar los detalles de la nómina seleccionada y de cada colaborador.
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 {% endblock %}
+
+
+
+

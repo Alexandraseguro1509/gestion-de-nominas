@@ -6,107 +6,195 @@
 {% block contenedor %}
 
 <style>
+/* Estilos globales */
+body {
+    background-color:  #04324D  /* Fondo gris suave */
+     font-family: 'Roboto', sans-serif;
+     font-weight: 400; /* Simula negrita, pero el efecto puede variar */
+     font-size: 20px;/*tamaño de letra*/
+     color:black;/*color de letra*/
+}
 
-    .boton_regresar, .boton_mas {
-        background-color: #000000;
-        color: #EBECE4;
-    }
+/* Barra de navegación */
+.navbar {
+    background-color: #04324D; /* Fondo gris oscuro */
+    padding: 15px 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
 
-    .boton_regresar:hover, .boton_mas:hover {
-        background-color: #EBECE4;
-    }
+/* Contenedor de la navbar */
+.navbar .container-fluid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-    .boton_inicio i {
-        font-size: 35px;
-        color: #000000;
-    }
+/* Título principal */
+.titulo {
+    font-size: 32px;
+    font-weight: 700;
+    color: #39A900; /* verde */
+    letter-spacing: 1px;
+}
 
-    .navbar {
-        position: fixed; /* Fija la navbar en la parte superior */
-        top: 0;          /* Alinea la navbar en la parte superior de la página */
-        width: 100%;     /* Asegura que la navbar ocupe todo el ancho de la pantalla */
-        background-color: #EBECE4;
-    }
+/* Hover sobre el título */
+.titulo:hover {
+    color: white; /* blanco */
+}
 
-    .nomina-listar-tabla {
-        margin-top: 70px;
-    }
-
-    .encabezado-tabla {
-        background-color: #EBECE4 !important;
-    }
-
-    .titulo_nomina {
-
-        color: #000;
-    }
-
-    td, th {
-        border: 1px solid #C4C7C1;
-        text-align: center;
-        white-space: nowrap;
-        padding: 20px;
-    }
-
-    th {
-        background-color: #442B1C;
-        color: #EBECE4;
-    }
-
-    /* Botón de scroll */
-    #scrollToEndBtn {
-        position: fixed; /* Para que siempre esté visible */
-        top: 10px; /* Separación desde la parte superior */
-        right: 10px; /* Separación desde la parte derecha */
+/* Botones */
+.boton_regresar, .boton_mas {
+  font-size: 25px;
+        color: white; /* Cambiado a blanco para contraste */
+        background-color: #39A900; /* Color rojo de fondo */
+        font-family: 'Roboto', sans-serif;
+        border: 2px solid white; /* Borde blanco de 2px */
         padding: 10px 20px;
-        cursor: pointer;
-        background-color: #442B1C;
-        color: white;
-        border: none;
-        border-radius: 5px;
+        margin-top: 20px;
+        text-align: center;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px; /* Bordes redondeados */
+        transition: background-color 0.3s, color 0.3s; /* Suaviza la transición */
+        font-family: 'Roboto', sans-serif;
+
+
+}
+
+ .boton_regresar:hover, .boton_mas:hover {
+        background-color: white ; /* Cambia el fondo a blanco al hacer hover */
+        color: #39A900; /* Cambia el color del texto a rojo al hacer hover */
     }
 
-    table tr {
-
-        z-index: 10; /* Asegúrate de que el encabezado esté por encima del contenido */
-
+/* Estilo para los iconos */
+ .boton_mas:hover{
+     background-color: #39A900;
+     color:white;
+    }
+    .boton_mas i {
+        font-size: 25px;
+        color: white; /* Color blanco del icono */
     }
 
-    table thead .headers {
-        position: sticky;
-        top: 0;
-        background-color: #442B1C; /* Asegúrate de que el fondo sea el mismo que el de los encabezados */
-        color: #EBECE4;
-        z-index: 10; /* Asegúrate de que el encabezado esté por encima del contenido */
-    }
+/* Contenido de la tabla */
+.nomina-listar-tabla {
+    margin-top: 105px; /* Espacio debajo de la navbar */
+}
 
-    table thead tr {
-        position: sticky;
-        top: 0;
-        background-color: #EBECE4; /* Asegúrate de que el fondo sea el mismo que el de los encabezados */
-        color: #442B1C;
-        z-index: 10; /* Asegúrate de que el encabezado esté por encima del contenido */
-    }
+.titulo_nomina {
+    font-size: 30px;
+    font-weight: 600;
+    color: #34495e; /* Gris oscuro */
+    margin-bottom: 20px;
+}
 
-    table tbody td {
-        background-color: #EBECE4; /* Fondo para las celdas de la tabla, si es necesario */
-    }
+/* Estilo de la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    font-size: 20px;
+    border: 1px solid #ddd;
+}
+
+/* Encabezado de la tabla */
+th {
+    background-color: #04324D; /* Azul */
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+     font-size: 20px;/*tamaño de letra*/
+}
+
+td {
+    background-color:#E6E6E6;
+}
+
+td:hover {
+    background-color:#E6E6E6; /* Gris claro */
+}
+
+/* Fila de tabla fija */
+table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+/* Botón de scroll hacia abajo */
+#scrollToEndBtn {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    padding: 15px;
+    background-color: #2980b9; /* Azul */
+    color: white;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+#scrollToEndBtn:hover {
+    background-color: #E6E6E6; /* Azul claro */
+}
+
+/* Modal de Recibo */
+.modal-content {
+    border-radius: 8px;
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    font-size: 34px;
+    font-weight: 700;
+    color: #34495e; /* Gris oscuro */
+    border-bottom: 1px solid #ddd;
+}
+
+.modal-body {
+    font-size: 38px;
+    color: #555;
+}
+
+/* Estilo para la sección de tabla */
+.table-responsive {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+
+
+
+
 
 </style>
 
-<body style="background-color: #442B1C;">
+<body>
 
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid align-items-center">
+    <nav class="navbar navbar-expand-lg" style="background-color:  #04324D; ">
+        <div class="container-fluid align-items-center" >
             <div>
                 <button class="btn btn-light transition duration-300 ease-in-out boton_regresar" onclick="window.history.back();">
-                    Regresar <i class="fa-solid fa-reply"></i>
+                   <i class="fa-solid fa-reply"></i>   Regresar
                 </button>
-                <a class="btn transition duration-300 ease-in-out boton_inicio" href="{% url 'nomina:index' %}">
+                <a class="btn transition duration-300 ease-in-out boton_mas" href="{% url 'nomina:index' %}">
                     <i class="bi bi-house-fill"></i>
                 </a>
             </div>
-            <h1 class="titulo_nomina m-0 flex-grow-1 text-center">Nómina</h1>
+            <h1 class="titulo">Nómina</h1>
             {% if request.session.logueo.nombre_rol == "Administrador" %}
             <a href="{% url 'nomina:export_nominas_to_excel' nominas.0.fecha_nomina %}" class="btn btn-success">
                 Descargar informe de nómina en Excel <i class="fa-solid fa-download"></i>
@@ -121,9 +209,9 @@
 
     {% if nominas %}
     {% if request.session.logueo.nombre_rol == "Administrador" %}
-        <div class="nomina-listar-tabla">
+        <div class="nomina-listar-tabla"  >
             <table>
-                <tr>
+                <tr style="color:black;">
                     <th>Fecha: </th>
                     <td>{{ nominas.0.fecha_nomina }}</td>
                 </tr>
@@ -217,19 +305,19 @@
                     <td><strong>{{ nomina.total_a_pagar|round_number:2|intcomma }}</strong></td>
                     <td>
                         <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#reciboModal"
-                                data-id="{{ nomina.id }}" onclick="showReciboModal({{ nomina.id }})">
+                                data-id="{{ nomina.id }}" onclick="showReciboModal({{ nomina.id }})"  style="color:white; font-size: 16px;">
                             Previsualizar
                             <i class="fa-solid fa-file-pdf"></i>
 
                         </button>
                     </td>
                     <td>
-                        <a href="{% url 'nomina:parafiscales' nomina.id %}" class="btn btn-primary">
+                        <a href="{% url 'nomina:parafiscales' nomina.id %}" class="btn btn-primary" style="font-size: 16px;">
                             Ver parafiscales
                         </a>
                     </td>
                     <td>
-                        <a href="{% url 'nomina:provisiones' nomina.id %}" class="btn btn-primary">
+                        <a href="{% url 'nomina:provisiones' nomina.id %}" class="btn btn-primary" style="font-size: 16px;">
                             Ver provisiones
                         </a>
                     </td>

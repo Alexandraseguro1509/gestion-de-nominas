@@ -5,102 +5,136 @@
 {% block contenedor %}
 
 <style>
-    .boton_regresar, .boton_mas {
-        background-color: #EBECE4;
-    }
-
-    .boton_regresar:hover, .boton_mas:hover {
-        background-color: #000000;
-        color: #EBECE4;
-    }
-
-    .boton_inicio i {
-        font-size: 35px;
-        color: #EBECE4;
-    }
-
-    .card {
-            background-color: #EBECE4;
-            margin: 10px;
-        }
-
-    .table thead {
-        background-color: #EBECE4 !important;
-    }
-
-    td, th {
-        border: 1px solid #C4C7C1;
-        text-align: center;
-        white-space: nowrap;
-        padding: 20px;
-    }
-
-    .contenedor-imagen-novedad {
-        padding: 0 !important;
-    }
-
-    .image-novedad {
-        width: 100%;
-        height: 100px;
-        object-fit: cover;
-    }
-
-    h2 {
-        text-align: center;
-    }
-
-    .contenedor-tarjeta-reportar-novedad {
-        background-color: #EBECE4;
-        padding: 30px;
-    }
-
-    .tarjeta-reportar-novedad {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        padding: 20px;
-    }
-
-    .contenedor-imagen-reportar-novedad {
-        padding-right: 20px;
-    }
-
-    .imagen-reportar-novedad {
-        width: 200px;
-        height: 200px;
-        border-radius: 100px;
-    }
-
-    .boton-reportar-novedad {
-        margin-bottom: 20px;
-    }
+ body {
+    background-color: #04324D !important;
 }
+
+.boton_regresar, .boton_inicio, .boton_mas {
+    font-size: 25px; /* Tamaño de fuente uniforme */
+    color: white; /* Color blanco */
+    background-color: #39A900; /* Fondo verde */
+    font-family: 'Roboto', sans-serif;
+    border: 2px solid white; /* Borde blanco */
+    padding: 10px 25px; /* Tamaño uniforme de los botones */
+    margin-top: 20px;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px; /* Bordes redondeados */
+    transition: background-color 0.3s, color 0.3s; /* Transición suave */
+
+}
+
+.boton_regresar:hover, .boton_mas:hover {
+    background-color:#39A900; /* Fondo blanco al hacer hover */
+    color: white; /* Texto verde al hacer hover */
+}
+
+.boton_inicio:hover {
+    background-color: #39A900; /* Fondo verde al hacer hover */
+    color: white; /* Texto blanco al hacer hover */
+}
+
+.boton_inicio i {
+    font-size: 25px;
+    color: white; /* Color blanco del icono */
+}
+
+.titulo {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    color: #39A900;
+    margin: 0;
+}
+
+.titulo:hover {
+    color: white; /* Cambia el color al hacer hover */
+}
+
+.card {
+    background-color: #EBECE4;
+    margin: 10px;
+}
+
+.table thead {
+    background-color: #EBECE4 !important;
+}
+
+td, th {
+    border: 1px solid rgb(0, 31, 63);
+    text-align: center;
+    white-space: nowrap;
+    padding: 20px;
+}
+
+.contenedor-imagen-novedad {
+    padding: 0 !important;
+}
+
+.image-novedad {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+}
+
+h2 {
+    text-align: center;
+}
+
+.contenedor-tarjeta-reportar-novedad {
+    background-color: #EBECE4;
+    padding: 30px;
+}
+
+.tarjeta-reportar-novedad {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    padding: 20px;
+}
+
+.contenedor-imagen-reportar-novedad {
+    padding-right: 20px;
+}
+
+.imagen-reportar-novedad {
+    width: 160px;
+    height: 160px;
+    border-radius: 100px;
+}
+
+.boton-reportar-novedad {
+    margin-bottom: 20px;
+}
+
 
 </style>
 
-<body style="background-color: #442B1C;">
+<body>
 
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid d-flex justify-content-between align-items-center">
         <div>
-            <a class="btn transition duration-300 ease-in-out boton_inicio" href="{% url 'nomina:index' %}">
+            <a class="btn transition duration-300 ease-in-out boton_inicio" href="{% url 'nomina:index' %}"  style="color: whithe;">
                 <i class="bi bi-house-fill"></i>
             </a>
         </div>
-        <h1 class="h3 mb-2 text-gray-800" style="color: #EBECE4;">Novedades</h1>
-        <a class="btn rounded btn-light boton_mas" href="{% url 'nomina:reportar_novedad' %}">
+        <h1 class="h3 titulo" >Novedades</h1>
+        <a class="btn rounded  boton_mas" href="{% url 'nomina:reportar_novedad' %}"  style="font-family: 'Roboto', sans-serif; font-weight: 300;font-size: 20px;color:white ">
             Reportar nueva novedad
         </a>
     </div>
 </nav>
 
 <!-- Contenido principal -->
-<div class="card shadow mb-4">
-    <div class="card-body">
+<div class="card shadow mb-4"  style="background-color:#04324d">
+    <div class="" style="background-color:#04324d">
         <div class="table-responsive">
-            <table class="mb-5" id="dataTable" width="100%" cellspacing="0">
+            <table class="mb-5" id="dataTable" width="100%" cellspacing="0" style="background-color:  #E6E6E6">
                 <thead>
-                <tr>
+                <tr  style=" background-color: #04324D ; color:white;  font-family: 'Roboto', sans-serif;">
                     <th>Foto</th>
                     <th>Fecha última novedad</th>
                     <th>Colaborador</th>
